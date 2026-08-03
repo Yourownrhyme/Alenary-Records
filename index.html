@@ -11,8 +11,7 @@
         :root {
             --copper: #c6855b;
             --copper-dark: #a36540;
-            --dark-bg: #030505;
-            --dark-teal: #0a1716;
+            --dark-teal: #081a18;
             --text-light: #e0e0e0;
             --text-muted: #888;
         }
@@ -21,42 +20,39 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
+            /* Явный изумрудно-медный градиент на фоне */
+            background: linear-gradient(135deg, #030a09 0%, #081a18 50%, #050d0c 100%);
+            background-attachment: fixed;
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Animated Glowing Orbs for Glassmorphism Refraction */
+        /* Светящиеся сферы для подсветки стекла */
         .bg-orbs {
             position: fixed;
             top: 0; left: 0; 
             width: 100vw; height: 100vh;
             z-index: 1;
             pointer-events: none;
-        }
-        
-        .bg-orbs::before {
-            content: ''; 
-            position: absolute;
-            width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(198, 133, 91, 0.08) 0%, transparent 60%);
-            top: -20%; left: -10%;
-            animation: float1 20s infinite alternate ease-in-out;
-        }
-        
-        .bg-orbs::after {
-            content: ''; 
-            position: absolute;
-            width: 70vw; height: 70vw;
-            background: radial-gradient(circle, rgba(16, 42, 40, 0.25) 0%, transparent 60%);
-            bottom: -20%; right: -20%;
-            animation: float2 25s infinite alternate ease-in-out;
+            background: 
+                radial-gradient(circle at 15% 40%, rgba(198, 133, 91, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 70%, rgba(16, 60, 50, 0.3) 0%, transparent 50%);
         }
 
-        @keyframes float1 { 0% { transform: translate(0, 0); } 100% { transform: translate(10vw, 15vh); } }
-        @keyframes float2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-15vw, -10vh); } }
+        /* Архитектурная сетка на фоне (премиум-деталь) */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; 
+            width: 100vw; height: 100vh;
+            z-index: 2;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(198, 133, 91, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(198, 133, 91, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
 
         h1, h2, h3 {
             font-family: 'Cinzel', serif;
@@ -72,7 +68,7 @@
             background-image: url('Shapka.jpeg');
             background-size: cover;
             background-position: center;
-            border-bottom: 1px solid rgba(198, 133, 91, 0.3);
+            border-bottom: 1px solid rgba(198, 133, 91, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,7 +79,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(3, 5, 5, 0.4) 0%, rgba(3, 5, 5, 1) 100%);
+            background: linear-gradient(to bottom, rgba(3, 10, 9, 0.3) 0%, rgba(3, 10, 9, 1) 100%);
         }
 
         /* Main Content */
@@ -106,23 +102,23 @@
             position: relative;
             z-index: 10;
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.6s ease;
         }
 
         .logo:hover { 
             transform: scale(1.03); 
-            box-shadow: 0 20px 50px rgba(198, 133, 91, 0.3);
+            box-shadow: 0 20px 50px rgba(198, 133, 91, 0.4);
         }
 
         /* Glassmorphism Manifesto */
         .manifesto {
-            background: rgba(10, 15, 14, 0.3);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(198, 133, 91, 0.08);
-            border-top: 1px solid rgba(198, 133, 91, 0.3); /* Glass Edge Highlight */
-            border-left: 1px solid rgba(198, 133, 91, 0.3); /* Glass Edge Highlight */
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            background: rgba(8, 20, 18, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(198, 133, 91, 0.1);
+            border-top: 1px solid rgba(198, 133, 91, 0.4);
+            border-left: 1px solid rgba(198, 133, 91, 0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             border-radius: 20px;
             padding: 3.5rem 3rem;
             font-size: 1.15rem;
@@ -131,7 +127,7 @@
             margin: 0 auto 6rem auto;
             font-weight: 300;
             max-width: 850px;
-            color: #ccc;
+            color: #d0d0d0;
         }
 
         .manifesto strong {
@@ -161,24 +157,24 @@
 
         /* Glassmorphism Release Card */
         .release-card {
-            background: rgba(10, 15, 14, 0.25);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(198, 133, 91, 0.08);
-            border-top: 1px solid rgba(198, 133, 91, 0.25); /* Glass Edge */
-            border-left: 1px solid rgba(198, 133, 91, 0.25); /* Glass Edge */
+            background: rgba(8, 20, 18, 0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 133, 91, 0.1);
+            border-top: 1px solid rgba(198, 133, 91, 0.35);
+            border-left: 1px solid rgba(198, 133, 91, 0.35);
             border-radius: 16px;
             text-align: left;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.4s ease;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
         .release-card:hover {
-            border-color: rgba(198, 133, 91, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(198, 133, 91, 0.15);
+            border-color: rgba(198, 133, 91, 0.5);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 25px rgba(198, 133, 91, 0.2);
             transform: translateY(-8px);
-            background: rgba(10, 15, 14, 0.4);
+            background: rgba(8, 20, 18, 0.5);
         }
 
         .cover-wrapper {
@@ -193,7 +189,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.8s ease;
         }
 
         .release-card:hover .cover-art {
@@ -222,7 +218,7 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* Glassmorphism Socials Section */
+        /* Glassmorphism Socials */
         .socials-section {
             display: flex;
             justify-content: center;
@@ -242,27 +238,23 @@
             letter-spacing: 1px;
             padding: 1rem 3rem;
             border-radius: 50px;
-            transition: all 0.4s ease;
-            background: rgba(10, 15, 14, 0.3);
+            transition: all 0.3s ease;
+            background: rgba(8, 20, 18, 0.4);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(198, 133, 91, 0.15);
-            border-top: 1px solid rgba(198, 133, 91, 0.35);
-            border-left: 1px solid rgba(198, 133, 91, 0.35);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(198, 133, 91, 0.2);
+            border-top: 1px solid rgba(198, 133, 91, 0.4);
+            border-left: 1px solid rgba(198, 133, 91, 0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        .social-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
+        .social-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
         .social-btn:hover {
             background: rgba(198, 133, 91, 0.9);
-            color: var(--dark-bg);
+            color: #030a09;
             border-color: var(--copper);
-            box-shadow: 0 10px 30px rgba(198, 133, 91, 0.4);
+            box-shadow: 0 10px 30px rgba(198, 133, 91, 0.5);
             transform: translateY(-4px);
         }
 
@@ -270,11 +262,11 @@
         footer {
             text-align: center;
             padding: 3rem 2rem;
-            border-top: 1px solid rgba(198, 133, 91, 0.1);
+            border-top: 1px solid rgba(198, 133, 91, 0.15);
             font-size: 0.85rem;
             letter-spacing: 1px;
             color: var(--text-muted);
-            background-color: rgba(3, 5, 5, 0.95);
+            background-color: rgba(3, 10, 9, 0.95);
             position: relative;
             z-index: 10;
         }
@@ -282,7 +274,9 @@
 </head>
 <body>
 
+    <!-- Графика фона -->
     <div class="bg-orbs"></div>
+    <div class="bg-grid"></div>
 
     <div class="hero"></div>
 
