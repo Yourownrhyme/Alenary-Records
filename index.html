@@ -21,13 +21,42 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Премиальный градиент вместо скучного черного фона */
-            background: radial-gradient(circle at top, #0e2b28 0%, #030505 100%);
-            background-attachment: fixed;
+            background-color: var(--dark-bg);
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
+
+        /* Animated Glowing Orbs for Glassmorphism Refraction */
+        .bg-orbs {
+            position: fixed;
+            top: 0; left: 0; 
+            width: 100vw; height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .bg-orbs::before {
+            content: ''; 
+            position: absolute;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(198, 133, 91, 0.08) 0%, transparent 60%);
+            top: -20%; left: -10%;
+            animation: float1 20s infinite alternate ease-in-out;
+        }
+        
+        .bg-orbs::after {
+            content: ''; 
+            position: absolute;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(16, 42, 40, 0.25) 0%, transparent 60%);
+            bottom: -20%; right: -20%;
+            animation: float2 25s infinite alternate ease-in-out;
+        }
+
+        @keyframes float1 { 0% { transform: translate(0, 0); } 100% { transform: translate(10vw, 15vh); } }
+        @keyframes float2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-15vw, -10vh); } }
 
         h1, h2, h3 {
             font-family: 'Cinzel', serif;
@@ -43,17 +72,18 @@
             background-image: url('Shapka.jpeg');
             background-size: cover;
             background-position: center;
-            border-bottom: 1px solid var(--copper-dark);
+            border-bottom: 1px solid rgba(198, 133, 91, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 5;
         }
 
         .hero::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(5, 10, 9, 0.4) 0%, rgba(5, 10, 9, 1) 100%);
+            background: linear-gradient(to bottom, rgba(3, 5, 5, 0.4) 0%, rgba(3, 5, 5, 1) 100%);
         }
 
         /* Main Content */
@@ -72,7 +102,7 @@
             border-radius: 50%;
             border: 2px solid var(--copper);
             margin-top: -110px;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
             z-index: 10;
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
@@ -81,18 +111,27 @@
 
         .logo:hover { 
             transform: scale(1.03); 
-            box-shadow: 0 20px 50px rgba(198, 133, 91, 0.2);
+            box-shadow: 0 20px 50px rgba(198, 133, 91, 0.3);
         }
 
-        /* Manifesto */
+        /* Glassmorphism Manifesto */
         .manifesto {
+            background: rgba(10, 15, 14, 0.3);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(198, 133, 91, 0.08);
+            border-top: 1px solid rgba(198, 133, 91, 0.3); /* Glass Edge Highlight */
+            border-left: 1px solid rgba(198, 133, 91, 0.3); /* Glass Edge Highlight */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            padding: 3.5rem 3rem;
             font-size: 1.15rem;
             line-height: 1.9;
             letter-spacing: 0.5px;
-            margin: 0 auto 5rem auto;
+            margin: 0 auto 6rem auto;
             font-weight: 300;
-            max-width: 800px;
-            color: #b3b3b3;
+            max-width: 850px;
+            color: #ccc;
         }
 
         .manifesto strong {
@@ -109,7 +148,7 @@
         .section-title {
             font-size: 2.5rem;
             letter-spacing: 3px;
-            margin-bottom: 4rem; /* Увеличил отступ, раз убрали подзаголовок */
+            margin-bottom: 4rem;
             text-transform: uppercase;
         }
 
@@ -117,23 +156,29 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 2.5rem;
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
         }
 
-        /* Premium Release Card */
+        /* Glassmorphism Release Card */
         .release-card {
-            background: rgba(10, 23, 22, 0.7);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(198, 133, 91, 0.15);
+            background: rgba(10, 15, 14, 0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(198, 133, 91, 0.08);
+            border-top: 1px solid rgba(198, 133, 91, 0.25); /* Glass Edge */
+            border-left: 1px solid rgba(198, 133, 91, 0.25); /* Glass Edge */
+            border-radius: 16px;
             text-align: left;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .release-card:hover {
-            border-color: var(--copper);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            border-color: rgba(198, 133, 91, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(198, 133, 91, 0.15);
             transform: translateY(-8px);
-            background: rgba(10, 23, 22, 0.9);
+            background: rgba(10, 15, 14, 0.4);
         }
 
         .cover-wrapper {
@@ -148,7 +193,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .release-card:hover .cover-art {
@@ -177,7 +222,7 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* Socials Section */
+        /* Glassmorphism Socials Section */
         .socials-section {
             display: flex;
             justify-content: center;
@@ -195,12 +240,16 @@
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
             letter-spacing: 1px;
-            border: 1px solid var(--copper);
-            padding: 0.8rem 2.5rem;
+            padding: 1rem 3rem;
             border-radius: 50px;
-            transition: all 0.3s ease;
-            background: rgba(10, 23, 22, 0.5);
-            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            background: rgba(10, 15, 14, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 133, 91, 0.15);
+            border-top: 1px solid rgba(198, 133, 91, 0.35);
+            border-left: 1px solid rgba(198, 133, 91, 0.35);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
 
         .social-btn svg {
@@ -210,10 +259,11 @@
         }
 
         .social-btn:hover {
-            background: var(--copper);
+            background: rgba(198, 133, 91, 0.9);
             color: var(--dark-bg);
-            box-shadow: 0 5px 20px rgba(198, 133, 91, 0.4);
-            transform: translateY(-3px);
+            border-color: var(--copper);
+            box-shadow: 0 10px 30px rgba(198, 133, 91, 0.4);
+            transform: translateY(-4px);
         }
 
         /* Footer */
@@ -224,11 +274,15 @@
             font-size: 0.85rem;
             letter-spacing: 1px;
             color: var(--text-muted);
-            background-color: rgba(3, 5, 5, 0.8);
+            background-color: rgba(3, 5, 5, 0.95);
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
+
+    <div class="bg-orbs"></div>
 
     <div class="hero"></div>
 
