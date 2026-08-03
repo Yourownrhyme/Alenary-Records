@@ -20,7 +20,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Явный изумрудно-медный градиент на фоне */
+            /* Чистый глубокий изумрудный градиент */
             background: linear-gradient(135deg, #030a09 0%, #081a18 50%, #050d0c 100%);
             background-attachment: fixed;
             color: var(--text-light);
@@ -29,7 +29,7 @@
             position: relative;
         }
 
-        /* Светящиеся сферы для подсветки стекла */
+        /* Светящиеся сферы для подсветки стекла (без сетки!) */
         .bg-orbs {
             position: fixed;
             top: 0; left: 0; 
@@ -39,19 +39,6 @@
             background: 
                 radial-gradient(circle at 15% 40%, rgba(198, 133, 91, 0.15) 0%, transparent 45%),
                 radial-gradient(circle at 85% 70%, rgba(16, 60, 50, 0.3) 0%, transparent 50%);
-        }
-
-        /* Архитектурная сетка на фоне (премиум-деталь) */
-        .bg-grid {
-            position: fixed;
-            top: 0; left: 0; 
-            width: 100vw; height: 100vh;
-            z-index: 2;
-            pointer-events: none;
-            background-image: 
-                linear-gradient(rgba(198, 133, 91, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(198, 133, 91, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
         }
 
         h1, h2, h3 {
@@ -274,9 +261,8 @@
 </head>
 <body>
 
-    <!-- Графика фона -->
+    <!-- Графика фона (только мягкий свет, без сетки) -->
     <div class="bg-orbs"></div>
-    <div class="bg-grid"></div>
 
     <div class="hero"></div>
 
