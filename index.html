@@ -11,7 +11,7 @@
         :root {
             --copper: #c6855b;
             --copper-dark: #a36540;
-            --dark-bg: #050a09;
+            --dark-bg: #030505;
             --dark-teal: #0a1716;
             --text-light: #e0e0e0;
             --text-muted: #888;
@@ -21,7 +21,9 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
+            /* Премиальный градиент вместо скучного черного фона */
+            background: radial-gradient(circle at top, #0e2b28 0%, #030505 100%);
+            background-attachment: fixed;
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
@@ -107,35 +109,31 @@
         .section-title {
             font-size: 2.5rem;
             letter-spacing: 3px;
-            margin-bottom: 1rem;
+            margin-bottom: 4rem; /* Увеличил отступ, раз убрали подзаголовок */
             text-transform: uppercase;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 4rem;
         }
 
         .releases-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 2.5rem;
+            margin-bottom: 5rem;
         }
 
         /* Premium Release Card */
         .release-card {
-    background: var(--dark-teal);
-    border: 1px solid rgba(198, 133, 91, 0.15);
-    text-align: left;
-    transition: all 0.4s ease;
-}
+            background: rgba(10, 23, 22, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(198, 133, 91, 0.15);
+            text-align: left;
+            transition: all 0.4s ease;
+        }
+
         .release-card:hover {
             border-color: var(--copper);
             box-shadow: 0 15px 30px rgba(0,0,0,0.6);
             transform: translateY(-8px);
+            background: rgba(10, 23, 22, 0.9);
         }
 
         .cover-wrapper {
@@ -179,16 +177,54 @@
             font-family: 'Cinzel', serif;
         }
 
+        /* Socials Section */
+        .socials-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--copper);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--copper);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(10, 23, 22, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .social-btn:hover {
+            background: var(--copper);
+            color: var(--dark-bg);
+            box-shadow: 0 5px 20px rgba(198, 133, 91, 0.4);
+            transform: translateY(-3px);
+        }
+
         /* Footer */
         footer {
             text-align: center;
-            padding: 4rem 2rem;
-            margin-top: 5rem;
+            padding: 3rem 2rem;
             border-top: 1px solid rgba(198, 133, 91, 0.1);
             font-size: 0.85rem;
             letter-spacing: 1px;
             color: var(--text-muted);
-            background-color: #030505;
+            background-color: rgba(3, 5, 5, 0.8);
         }
     </style>
 </head>
@@ -208,7 +244,6 @@
         </div>
 
         <h2 class="section-title">The Catalog</h2>
-        <div class="section-subtitle">Global Standard Architecture</div>
         
         <div class="releases-grid">
             
@@ -244,15 +279,16 @@
                 <div class="release-info"><div class="release-artist">IsoLate</div><h3 class="release-title">Fideo</h3></div>
             </div>
 
-            <!-- KaRRRIVa Releases -->
-           <div class="release-card">
-    <div class="cover-wrapper"><div class="cover-art" style="background-image: url('KaRRIVa - Amara.jpeg');"></div></div>
-    <div class="release-info"><div class="release-artist">KaRRIVa</div><h3 class="release-title">Amara</h3></div>
-</div>
-<div class="release-card">
-    <div class="cover-wrapper"><div class="cover-art" style="background-image: url('KaRRIVa - Bongoclaat.jpeg');"></div></div>
-    <div class="release-info"><div class="release-artist">KaRRIVa</div><h3 class="release-title">Bongoclaat</h3></div>
-</div>
+            <!-- KaRRIVa Releases -->
+            <div class="release-card">
+                <div class="cover-wrapper"><div class="cover-art" style="background-image: url('KaRRIVa - Amara.jpeg');"></div></div>
+                <div class="release-info"><div class="release-artist">KaRRIVa</div><h3 class="release-title">Amara</h3></div>
+            </div>
+            <div class="release-card">
+                <div class="cover-wrapper"><div class="cover-art" style="background-image: url('KaRRIVa - Bongoclaat.jpeg');"></div></div>
+                <div class="release-info"><div class="release-artist">KaRRIVa</div><h3 class="release-title">Bongoclaat</h3></div>
+            </div>
+
             <!-- Sick Well Releases -->
             <div class="release-card">
                 <div class="cover-wrapper"><div class="cover-art" style="background-image: url('Sick Well - Atlantis.jpeg');"></div></div>
@@ -299,11 +335,11 @@
                 <div class="release-info"><div class="release-artist">Jiggly</div><h3 class="release-title">Ruta! Tuta!</h3></div>
             </div>
 
-          <div class="release-card">
+            <div class="release-card">
                 <div class="cover-wrapper"><div class="cover-art" style="background-image: url('Kai Miss - Whutcha Want.jpeg');"></div></div>
                 <div class="release-info"><div class="release-artist">Kai Miss</div><h3 class="release-title">Whutcha Want</h3></div>
             </div>
-            
+
             <div class="release-card">
                 <div class="cover-wrapper"><div class="cover-art" style="background-image: url('Keiki Bruv - Juicy Lame.jpeg');"></div></div>
                 <div class="release-info"><div class="release-artist">Keiki Bruv</div><h3 class="release-title">Juicy Lame</h3></div>
@@ -350,6 +386,19 @@
             </div>
 
         </div>
+
+        <!-- Socials Section -->
+        <div class="socials-section">
+            <a href="https://www.facebook.com/share/1BeDeUnJgA/" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                Facebook
+            </a>
+            <a href="https://www.youtube.com/@AlenaryRecords1" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                YouTube
+            </a>
+        </div>
+
     </div>
 
     <footer>
